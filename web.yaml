@@ -6,11 +6,12 @@ services:
     ports:
       - "8080:8000"
     environment:
-      DB_HOST: "db"
+      DB_HOST: "192.168.1.2"
       DB_PORT: "3306"
-      DB_NAME: mariadb
+      DB_NAME: testdb
       DB_USER: test
       DB_PASS: P@ssw0rd
+      DB_TYPE: maria
     depends_on:
       - db
 
@@ -21,10 +22,10 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: P@ssw0rd
-      MYSQL_DATABASE: mariadb
-      MYSQL_USER: test
-      MYSQL_PASSWORD: P@ssw0rd
+      MARIADB_DATABASE: testdb
+      MARIADB_USER: test
+      MARIADB_PASSWORD: P@ssw0rd
+      MARIADB_ROOT_PASSWORD: rootpassword
     volumes:
       - db_data:/var/lib/mysql
 
